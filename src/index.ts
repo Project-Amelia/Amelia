@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv-flow').config();
 import Discord from 'discord.js';
 import CommandLookup from './utils/CommandLookup';
 import EmojiLookup from './utils/EmojiLookup';

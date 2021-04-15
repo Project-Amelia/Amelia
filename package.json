@@ -4,9 +4,10 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "serve": "node dist/index.js",
-    "start": "node dist/index.js",
+    "serve": "node -r dotenv-flow/config dist/index.js --node-env=development",
+    "start": "node -r dotenv-flow/config dist/index.js --node-env=development",
     "start:dev": "nodemon",
+    "start:prod": "node -r dotenv-flow/config dist/index.js --node-env=production",
     "build": "tsc",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
@@ -17,7 +18,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "discord.js": "^12.5.1",
-    "dotenv": "^8.2.0"
+    "dotenv-flow": "^3.2.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.16",
