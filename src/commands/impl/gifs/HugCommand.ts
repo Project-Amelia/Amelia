@@ -1,8 +1,6 @@
 import Discord from 'discord.js';
 import BotCommand from '../../BotCommand';
-import hugJson from '../../../assets/json/hug.gifs.json';
-import { HugConstants } from '../../../utils/constants/HugConstants';
-import { config } from '../../../config/amelia.config.json';
+import { gifs } from '../../../assets/json/hug.gifs.json';
 import MessageService from '../../../services/MessageService';
 import MessageServiceImpl from '../../../services/MessageServiceImpl';
 
@@ -12,7 +10,6 @@ export default class HugCommand implements BotCommand {
   description: string;
   usage: string;
   enabled: boolean;
-
   messageService: MessageService;
 
   constructor() {
@@ -37,20 +34,14 @@ export default class HugCommand implements BotCommand {
       title = `${title} Amelia`;
     }
 
-    // TODO: remove this filter implementation, remove regex, we need a new json file for this...
-    const hugGifs = hugJson.actions.filter(
-      (e) => e.name === HugConstants.actionGifName
-    );
-    const hugGif = hugGifs[Math.floor(Math.random() * hugGifs.length)];
-    const rmQuoteRegex = /^"+|"+$/g;
-
     this.messageService.sendEmbed(
       msg,
       title,
-      hugGif.value.replace(rmQuoteRegex, '')
+      gifs[Math.floor(Math.random() * gifs.length)]
     );
 
     // TODO: save hug count, increase it somewhere. and if possible, get the current hugcount from everybody if its saved somewhere...
+    // Database impediment, will come Soon™
 
     return true;
   }
