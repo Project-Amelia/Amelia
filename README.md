@@ -75,17 +75,27 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ## Contact
 
-Bent Van Aeken - [Discord Server](https://discord.gg/AnimeFansNL) - bentpakt@gmail.com - Buba Bent#0001
+Feel free to join our [Discord Server](https://discord.gg/AnimeFansNL) if you have any questions!
 
-Project Link: [https://github.com/AnimeFansNL/Amelia](https://github.com/AnimeFansNL/Amelia)
+* **Jerry** - *Lead Software Engineer* - jerry@animefans.online - [Sheep#0001]
+* **Rick** - *Developer* - rick@animefans.online - [Rick Рик Catian#8909]
+* **Duppie** - *Developer* - duppie@animefans.online - [Centella#4712]
+* **Laura** - *Junior Developer* - laura@animefans.online - [òkunkun#6342]
+* **Zenny** - *Infra* - [Zenny#3173]
+* **Cor** - *Professional Code Reviewer* - cor@animefans.online - [Saber#4380]
+* **Rik** - *Mental Support* - rik@animefans.online - [Riccl#6969]
+* **Hugo** - *Mental Support* - hugo@animefans.online - [Hvalebeek#0113]
+* **Bent Van Aeken** - *Server Founder* - bent@animefans.online - [Buba Bent#0001]
+
+Project Link: [https://github.com/Project-Amelia/Amelia](https://github.com/Project-Amelia/Amelia)
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/AnimeFansNL/Amelia.svg?style=flat-square
-[contributors-url]: https://github.com/AnimeFansNL/Amelia/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/AnimeFansNL/Amelia.svg?style=flat-square
-[forks-url]: https://github.com/AnimeFansNL/Amelia/network/members
-[issues-shield]: https://img.shields.io/github/issues/AnimeFansNL/Amelia.svg?style=flat-square
-[issues-url]: https://github.com/AnimeFansNL/Amelia/issues
+[contributors-shield]: https://img.shields.io/github/contributors/Project-Amelia/Amelia.svg?style=flat-square
+[contributors-url]: https://github.com/Project-Amelia/Amelia/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Project-Amelia/Amelia.svg?style=flat-square
+[forks-url]: https://github.com/Project-Amelia/Amelia/network/members
+[issues-shield]: https://img.shields.io/github/issues/Project-Amelia/Amelia.svg?style=flat-square
+[issues-url]: https://github.com/Project-Amelia/Amelia/issues
