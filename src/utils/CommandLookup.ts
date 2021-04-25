@@ -2,12 +2,18 @@ import BotCommand from '../commands/BotCommand';
 import PingCommand from '../commands/impl/misc/PingCommand';
 import OkCommand from '../commands/impl/gifs/OkCommand';
 import HugCommand from '../commands/impl/gifs/HugCommand';
+import WelkomCommand from '../commands/impl/moderation/WelkomCommand';
 
 export default class CommandLookup {
   commands: Array<BotCommand>;
 
   constructor() {
-    const commands = [new PingCommand(), new OkCommand(), new HugCommand()];
+    const commands = [
+      new PingCommand(),
+      new OkCommand(),
+      new HugCommand(),
+      new WelkomCommand()
+    ];
 
     this.commands = commands;
   }
