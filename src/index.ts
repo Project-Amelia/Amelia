@@ -1,8 +1,17 @@
 require('dotenv-flow').config();
+import 'reflect-metadata';
 import Discord from 'discord.js';
 import CommandLookup from './utils/CommandLookup';
 import EmojiLookup from './utils/EmojiLookup';
 import MessageHandler from './controllers/MessageHandler';
+import { createConnection } from 'typeorm';
+
+// TEST DB
+createConnection()
+  .then(async (connection) => {
+    console.log(`Connection database: ${connection.isConnected}`);
+  })
+  .catch((error) => console.log(error));
 
 const client = new Discord.Client();
 const messageHandler = new MessageHandler(process.env.PREFIX);
