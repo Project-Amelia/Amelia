@@ -5,11 +5,16 @@ import CommandLookup from './utils/CommandLookup';
 import EmojiLookup from './utils/EmojiLookup';
 import MessageHandler from './controllers/MessageHandler';
 import { createConnection } from 'typeorm';
+import { DiscordUser } from './entity/DiscordUser';
+import { CustomCommand } from './entity/CustomCommand';
 
 // TEST DB
 createConnection()
   .then(async (connection) => {
     console.log(`Connection database: ${connection.isConnected}`);
+    const repo = connection.getRepository(CustomCommand);
+    const allUsers = await repo.findOne(1, { relations: ['discordUser'] });
+    console.log(allUsers);
   })
   .catch((error) => console.log(error));
 
