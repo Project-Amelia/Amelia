@@ -3,10 +3,12 @@ import {
   Entity,
   PrimaryColumn,
   Column,
+  OneToOne,
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn
 } from 'typeorm';
+import { UserStats } from './UserStats';
 import { CustomCommand } from './CustomCommand';
 
 @Entity({ name: 'discorduser' })
@@ -19,6 +21,9 @@ export class DiscordUser extends BaseEntity {
 
   @Column()
   customCommandAllowance: number;
+
+  @OneToOne(() => UserStats, (userStats: UserStats) => userStats.discordUser)
+  userStats: UserStats;
 
   @OneToMany(
     () => CustomCommand,

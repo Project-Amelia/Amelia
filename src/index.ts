@@ -12,8 +12,10 @@ import { CustomCommand } from './entity/CustomCommand';
 createConnection()
   .then(async (connection) => {
     console.log(`Connection database: ${connection.isConnected}`);
-    const repo = connection.getRepository(CustomCommand);
-    const allUsers = await repo.findOne(1, { relations: ['discordUser'] });
+    const repo = connection.getRepository(DiscordUser);
+    const allUsers = await repo.find({
+      relations: ['userStats', 'customCommands']
+    });
     console.log(allUsers);
   })
   .catch((error) => console.log(error));
