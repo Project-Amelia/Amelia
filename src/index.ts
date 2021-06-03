@@ -7,16 +7,17 @@ import MessageHandler from './controllers/MessageHandler';
 import { createConnection } from 'typeorm';
 import { DiscordUser } from './entity/DiscordUser';
 import { CustomCommand } from './entity/CustomCommand';
+import { CustomCommandImage } from './entity/CustomCommandImage';
 
 // TEST DB
 createConnection()
   .then(async (connection) => {
     console.log(`Connection database: ${connection.isConnected}`);
-    const repo = connection.getRepository(DiscordUser);
+    const repo = connection.getRepository(CustomCommand);
     const allUsers = await repo.find({
-      relations: ['userStats', 'customCommands']
+      relations: ['customCommandImages']
     });
-    console.log(allUsers);
+    console.log(allUsers[0]);
   })
   .catch((error) => console.log(error));
 

@@ -4,10 +4,12 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
+  OneToMany,
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn
 } from 'typeorm';
+import { CustomCommandImage } from './CustomCommandImage';
 import { DiscordUser } from './DiscordUser';
 
 @Entity({ name: 'customcommand' })
@@ -31,6 +33,12 @@ export class CustomCommand extends BaseEntity {
 
   @Column({ nullable: false })
   commandText: string;
+
+  @OneToMany(
+    () => CustomCommandImage,
+    (customCommand: CustomCommandImage) => customCommand.customCommand
+  )
+  customCommandImages: CustomCommandImage[];
 
   @CreateDateColumn()
   created_at: Date;
