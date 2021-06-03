@@ -4,22 +4,7 @@ import Discord from 'discord.js';
 import CommandLookup from './utils/CommandLookup';
 import EmojiLookup from './utils/EmojiLookup';
 import MessageHandler from './controllers/MessageHandler';
-import { createConnection } from 'typeorm';
-import { DiscordUser } from './entity/DiscordUser';
-import { CustomCommand } from './entity/CustomCommand';
-import { CustomCommandImage } from './entity/CustomCommandImage';
-
-// TEST DB
-createConnection()
-  .then(async (connection) => {
-    console.log(`Connection database: ${connection.isConnected}`);
-    const repo = connection.getRepository(CustomCommand);
-    const allUsers = await repo.find({
-      relations: ['customCommandImages']
-    });
-    console.log(allUsers[0]);
-  })
-  .catch((error) => console.log(error));
+import { MSDBService } from './services/MSDBService';
 
 const client = new Discord.Client();
 const messageHandler = new MessageHandler(process.env.PREFIX);
@@ -31,9 +16,18 @@ const commandLookup = new CommandLookup();
 export { commandLookup };
 
 // Init discord client
-client.on('ready', () => {
-  emojiLookup.init(client);
-  console.log(`Logged in as ${client.user.tag}!`);
+client.on('ready', async () => {
+  try {
+    // Init database
+    console.log('Creating database connection...');
+    const conn = await MSDBService.init();
+    console.log(`Connection created: ${conn.isConnected}`);
+
+    emojiLookup.init(client);
+    console.log(`Logged in as ${client.user.tag}!`);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 // Use message handler to handle messages
