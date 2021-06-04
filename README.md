@@ -55,7 +55,7 @@ Amelia is built with love and
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/AnimeFansNL/Amelia/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/Project-Amelia/Amelia/issues) for a list of proposed features (and known issues).
 
 
 
