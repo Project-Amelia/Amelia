@@ -24,6 +24,8 @@ CREATE TABLE userstats (
 	pokeCount int,
 	slapCount int,
 	superStaffCount int,
+    created_at datetime,
+    updated_at datetime,
 	CONSTRAINT pk_id_userstats PRIMARY KEY (id),
 	CONSTRAINT fk_user_stats FOREIGN KEY (id)
 	REFERENCES discorduser(id)
@@ -37,6 +39,8 @@ CREATE TABLE userwarn (
 	description varchar(2000) NOT NULL,
 	issuer bigint NOT NULL,
 	revoked bit NOT NULL,
+    created_at datetime,
+    updated_at datetime,
 	CONSTRAINT pk_id_userwarn PRIMARY KEY (id),
 	CONSTRAINT fk_user_warned FOREIGN KEY (warnedUser)
 	REFERENCES discorduser(id)
@@ -54,6 +58,8 @@ CREATE TABLE userban (
 	description varchar(2000) NOT NULL,
 	issuer bigint NOT NULL,
 	revoked bit NOT NULL,
+    created_at datetime,
+    updated_at datetime,
 	CONSTRAINT pk_id_userban PRIMARY KEY (id),
 	CONSTRAINT fk_user_banned FOREIGN KEY (bannedUser)
 	REFERENCES discorduser(id)
@@ -70,6 +76,8 @@ CREATE TABLE customcommand (
 	discordUserId bigint NOT NULL,
 	commandName varchar(64) NOT NULL,
 	commandText varchar(2000) NOT NULL,
+    created_at datetime,
+    updated_at datetime,
 	CONSTRAINT pk_id_customcommand PRIMARY KEY (id),
 	CONSTRAINT fk_user_custom_command FOREIGN KEY (discordUserId)
 	REFERENCES discorduser(id)
@@ -81,6 +89,8 @@ CREATE TABLE customcommandimage (
 	id int IDENTITY(1,1) NOT NULL,
 	customCommandId int NOT NULL,
 	imageUrl varchar(2000) NOT NULL,
+    created_at datetime,
+    updated_at datetime,
 	CONSTRAINT pk_id_customcommandimage PRIMARY KEY (id),
 	CONSTRAINT fk_custom_command_custom_command_image FOREIGN KEY (customCommandId)
 	REFERENCES customcommand(id)

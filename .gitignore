@@ -4,6 +4,8 @@ node_modules
 logs
 built
 build
+tmp
+temp
 
 # local env files
 .env
