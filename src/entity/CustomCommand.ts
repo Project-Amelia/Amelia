@@ -17,8 +17,8 @@ export class CustomCommand extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: false })
-  discordUserId: number;
+  @Column({ type: 'varchar', nullable: false })
+  discordUserId: string;
 
   @ManyToOne(
     () => DiscordUser,

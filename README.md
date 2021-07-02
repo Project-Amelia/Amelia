@@ -5,16 +5,16 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/AnimeFansNL/">
+  <a href="https://github.com/Project-Amelia/">
     <img src="https://ucarecdn.com/98674e15-e919-4e2b-b7ba-6692836d8059/" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Anime Fans Nederland</h3>
+  <h3 align="center">Dutch Anime Community</h3>
 
   <p align="center">
-    An awsome Discord Bot for the AFN community!
+    An awesome Discord Bot for the Dutch Anime Community!
     <br />
-    <a href="https://github.com/orgs/AnimeFansNL/projects/1"><strong>Explore our progress »</strong></a>
+    <a href="https://github.com/Project-Amelia/Amelia/projects/1"><strong>Explore our progress »</strong></a>
 </p>
 
 <!-- TABLE OF CONTENTS -->
@@ -69,7 +69,7 @@ Contributions are what make the open source community such an amazing place to b
 
 ## Contact
 
-Feel free to join our [Discord Server](https://discord.gg/AnimeFansNL) if you have any questions!
+Feel free to join our [Discord Server](https://discord.gg/dutchanimecommunity) if you have any questions!
 
 - **Jerry** - _Lead Software Engineer_ - jerry@animefans.online - [Sheep#0001]
 - **Rick** - _Developer_ - rick@animefans.online - [Rick_#8909]

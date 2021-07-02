@@ -13,8 +13,8 @@ import { CustomCommand } from './CustomCommand';
 
 @Entity({ name: 'discorduser' })
 export class DiscordUser extends BaseEntity {
-  @PrimaryColumn()
-  id: number;
+  @PrimaryColumn({ type: 'varchar' })
+  id: string;
 
   @Column()
   birthdate: Date;
