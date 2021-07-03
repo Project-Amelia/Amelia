@@ -12,8 +12,8 @@ import { DiscordUser } from './DiscordUser';
 
 @Entity({ name: 'userstats' })
 export class UserStats extends BaseEntity {
-  @PrimaryColumn()
-  id: number;
+  @PrimaryColumn({ type: 'varchar' })
+  id: string;
 
   @Column()
   hugCount: number;

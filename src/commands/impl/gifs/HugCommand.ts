@@ -1,8 +1,13 @@
 import Discord from 'discord.js';
 import BotCommand from '../../BotCommand';
-import hugJson from '../../../assets/json/hug.gifs.json';
-import { HugConstants } from '../../../utils/constants/HugConstants';
-import { config } from '../../../config/amelia.config.json';
+import { gifs } from '../../../assets/json/hug.gifs.json';
+import MessageService from '../../../services/MessageService';
+import MessageServiceImpl from '../../../services/MessageServiceImpl';
+import DiscordUserService from '../../../services/DiscordUserService';
+import DiscordUserServiceImpl from '../../../services/DiscordUserServiceImpl';
+import { MSDBService } from '../../../services/MSDBService';
+import { DiscordUser } from '../../../entity/DiscordUser';
+import { UserStats } from '../../../entity/UserStats';
 
 export default class HugCommand implements BotCommand {
   name: string;
@@ -10,6 +15,8 @@ export default class HugCommand implements BotCommand {
   description: string;
   usage: string;
   enabled: boolean;
+  messageService: MessageService;
+  discordUserService: DiscordUserService;
 
   constructor() {
     this.name = 'hug';
@@ -17,12 +24,15 @@ export default class HugCommand implements BotCommand {
     this.description = 'Send some lovely hugs to someone <3.';
     this.usage = `${process.env.PREFIX}hug`;
     this.enabled = true;
+    this.messageService = new MessageServiceImpl();
+    this.discordUserService = new DiscordUserServiceImpl();
   }
 
   // eslint-disable-next-line
-  execute(msg: Discord.Message, args: string[]): boolean {
+  async execute(msg: Discord.Message, args: string[]): Promise<boolean> {
     if (!this.enabled) return false;
 
+    // Create title message
     let title = `${msg.author.username} knuffelt`;
     const taggedUser = msg.mentions?.members?.first();
     if (taggedUser) {
@@ -31,19 +41,35 @@ export default class HugCommand implements BotCommand {
       title = `${title} Amelia`;
     }
 
-    const hugGifs = hugJson.actions.filter(
-      (e) => e.name === HugConstants.actionGifName
+    this.messageService.sendEmbed(
+      msg,
+      title,
+      gifs[Math.floor(Math.random() * gifs.length)]
     );
-    const hugGif = hugGifs[Math.floor(Math.random() * hugGifs.length)];
 
-    // create embed message
-    const rmQuoteRegex = /^"+|"+$/g;
-    const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
-      .setColor(config.colors.primary)
-      .setTitle(title)
-      .setImage(hugGif.value.replace(rmQuoteRegex, ''));
+    // Add HugCount
+    try {
+      const conn = MSDBService.getConnection();
+      const dbDiscordUser = conn.getRepository(DiscordUser);
+      const dbUserStats = conn.getRepository(UserStats);
 
-    msg.channel.send(embed);
-    return true;
+      const authorStats = await dbDiscordUser.findOne(msg.author.id, {
+        relations: ['userStats']
+      });
+
+      if (!authorStats?.id || !authorStats?.userStats?.id) {
+        await this.discordUserService.create(msg.author.id);
+      }
+
+      let hugCount = authorStats?.userStats?.hugCount || 0;
+      hugCount++;
+      await dbUserStats.update(msg.author.id, { hugCount });
+      return true;
+    } catch (ex) {
+      console.log(
+        `Exception adding hugcount to DiscordUser with message: ${ex.message}`
+      );
+      return false;
+    }
   }
 }
