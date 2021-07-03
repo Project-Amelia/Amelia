@@ -23,13 +23,12 @@ export default class ClearCommand implements BotCommand {
     this.messageService = new MessageServiceImpl();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   execute(msg: Discord.Message, args: string[]): boolean {
     if (!this.enabled) return false;
 
     if (args.length === 0) {
       msg.reply('je moet een aantal opgeven.');
-      return;
+      return false;
     }
 
     const messagesToDelete = parseInt(args[0]);
@@ -44,9 +43,9 @@ export default class ClearCommand implements BotCommand {
         true
       );
 
-      let footer = `Ik heb ${messagesToDelete} berichten verwijdert.`;
+      let message = 'berichten';
       if (messagesToDelete === 1) {
-        footer = `Ik heb ${messagesToDelete} bericht verwijdert.`;
+        message = message.substring(0, message.length - 2);
       }
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -56,7 +55,7 @@ export default class ClearCommand implements BotCommand {
         'Ik heb de chat weer proper en netjes gemaakt!',
         gifs.clear,
         'Er stonden namelijk enkele nare berichtjes tussen.',
-        footer
+        `Ik heb ${messagesToDelete} ${message} verwijdert.`
       );
     } else {
       msg.reply('je moet een aantal opgeven.');
