@@ -1,6 +1,6 @@
 import MessageService from './MessageService';
 import { Message, MessageEmbed } from 'discord.js';
-import { config } from '../config/amelia.config.json';
+import { config } from '../config/amelia.config';
 
 export default class MessageServiceImpl implements MessageService {
   public sendEmbed(

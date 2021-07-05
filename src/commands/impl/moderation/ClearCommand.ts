@@ -1,6 +1,6 @@
 import Discord from 'discord.js';
 import BotCommand from '../../BotCommand';
-import { config } from '../../../config/amelia.config.json';
+import { config } from '../../../config/amelia.config';
 import MessageService from '../../../services/MessageService';
 import MessageServiceImpl from '../../../services/MessageServiceImpl';
 
@@ -48,12 +48,10 @@ export default class ClearCommand implements BotCommand {
         message = message.substring(0, message.length - 2);
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const gifs: any = config.gifs;
       this.messageService.sendEmbed(
         msg,
         'Ik heb de chat weer proper en netjes gemaakt!',
-        gifs.clear,
+        config.gifs.clear,
         'Er stonden namelijk enkele nare berichtjes tussen.',
         `Ik heb ${messagesToDelete} ${message} verwijdert.`
       );
