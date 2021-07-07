@@ -33,8 +33,13 @@ export default class ClearCommand implements BotCommand {
 
     const messagesToDelete = parseInt(args[0]);
     if (messagesToDelete) {
-      if (messagesToDelete > MAX_MESSAGES || messagesToDelete < 0) {
+      if (messagesToDelete > MAX_MESSAGES) {
         msg.reply('je mag maximaal 99 messages clearen.');
+        return false;
+      }
+
+      if (messagesToDelete < 0) {
+        msg.reply('je mag geen negatieve getallen opgeven.');
         return false;
       }
 
