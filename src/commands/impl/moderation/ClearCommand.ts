@@ -58,7 +58,7 @@ export default class ClearCommand implements BotCommand {
         'Ik heb de chat weer proper en netjes gemaakt!',
         config.gifs.clear,
         'Er stonden namelijk enkele nare berichtjes tussen.',
-        `Ik heb ${messagesToDelete} ${message} verwijdert.`
+        `Ik heb ${messagesToDelete} ${message} verwijderd.`
       );
     } else {
       msg.reply('je moet een aantal opgeven.');
