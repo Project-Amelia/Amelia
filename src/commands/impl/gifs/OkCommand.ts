@@ -1,6 +1,6 @@
 import Discord from 'discord.js';
 import BotCommand from '../../BotCommand';
-import { config } from '../../../config/amelia.config.json';
+import { config } from '../../../config/amelia.config';
 
 export default class OkCommand implements BotCommand {
   name: string;
